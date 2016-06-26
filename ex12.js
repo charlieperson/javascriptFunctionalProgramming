@@ -58,6 +58,38 @@ function() {
 			}
 		];
 
+  return movieLists.map(function(movieList) {
+    return movieList.videos.map(function(video) {
+      return video.boxarts.filter(function(boxart) {
+        return boxart.width === 150;
+      }).map(function(boxart) {
+        return {id: video.id, title: video.title, boxart: boxart.url};
+      });
+    }).concatAll();
+  }).concatAll();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	// Use one or more map, concatAll, and filter calls to create an array with the following items
 	// [
@@ -66,19 +98,3 @@ function() {
 	//	 {"id": 654356453,"title": "Bad Boys","boxart":"http://cdn-0.nflximg.com/images/2891/BadBoys150.jpg" },
 	//	 {"id": 70111470,"title": "Die Hard","boxart":"http://cdn-0.nflximg.com/images/2891/DieHard150.jpg" }
 	// ];
-
-  return movieLists.map(function(movieList){
-    return movieList.videos.map(function(video){
-      return {
-        'id': video.id,
-        'title': video.title,
-        'boxart':
-        video.boxarts.filter(function(artCollection){
-          return artCollection.width == 150;
-        }).map(function(art){
-          return art.url;
-        })
-      };
-    });
-  });
-}

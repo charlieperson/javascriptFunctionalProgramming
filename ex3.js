@@ -35,12 +35,6 @@ function pair() {
 	],
 	videoAndTitlePairs = [];
 
-	// ------------ INSERT CODE HERE! -----------------------------------
-	// Use forEach function to accumulate {id, title} pairs from each video.
-	// Put the results into the videoAndTitlePairs array using the Array's
-	// push() method. Example: videoAndTitlePairs.push(newItem);
-	// ------------ INSERT CODE HERE! -----------------------------------
-
   for(var i=0; i<newReleases.length; i++){
     videoAndTitlePairs.push({'id': newReleases[i].id, 'title': newReleases[i].title});
   }

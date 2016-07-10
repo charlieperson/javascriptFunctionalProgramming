@@ -7,7 +7,7 @@ function(button) {
 			forEach(function(clickEvent) {
 				alert("Button was clicked. Stopping Traversal.");
 
-				// Stop traversing the button clicks
+				// Stop traversing tahe button clicks
 				subscription.dispose();
 			});
 }

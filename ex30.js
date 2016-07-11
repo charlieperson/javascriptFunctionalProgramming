@@ -4,8 +4,9 @@ function(button) {
 	// Use take() to listen for only one button click
 	// and unsubscribe.
 	buttonClicks.
-		// Insert take() call here
-		forEach(function(clickEvent) {
+		take(1).
+		forEach(function() {
 			alert("Button was clicked once. Stopping Traversal.");
 		});
 }
+		

@@ -1,14 +1,15 @@
 function(pricesNASDAQ, printRecord, stopButton) {
-	var stopButtonClicks = // ----- To finish this expression, use Observable.fromEvent to convert the "click" event on the stop button to an Observable
+	var stopButtonClicks = Observable.fromEvent(stopButton,"click"),
 		microsoftPrices =
 			pricesNASDAQ.
 				filter(function(priceRecord) {
 					return priceRecord.name === "MSFT";
 				}).
-				// ----- To finish this expression, use takeUntil to complete the sequence when stopButtonClicks fires.
+				takeUntil(stopButtonClicks);
 
 	microsoftPrices.
 		forEach(function(priceRecord) {
 			printRecord(priceRecord);
 		});
 }
+		

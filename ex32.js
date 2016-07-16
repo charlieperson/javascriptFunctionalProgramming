@@ -5,12 +5,12 @@ function(sprite, spriteContainer) {
 		spriteMouseDrags =
 			// For every mouse down event on the sprite...
 			spriteMouseDowns.
-				// --------------------------------------------------------
-				//					  INSERT CODE HERE
-				// --------------------------------------------------------
-				// Complete this expression...
-				// For every mouse down event, return the mouse move event
-				// sequence until a mouse up event occurs.
+				concatMap(function(contactPoint) {
+					// ...retrieve all the mouse move events on the sprite container...
+					return spriteContainerMouseMoves.
+						// ...until a mouse up event occurs.
+						takeUntil(spriteContainerMouseUps);
+				});
 
 	// For each mouse drag event, move the sprite to the absolute page position.
 	spriteMouseDrags.forEach(function(dragPoint) {

@@ -14,14 +14,12 @@ function(sprite, spriteContainer) {
 					return spriteContainerMouseMoves.
 						// ...until a mouse up event occurs.
 						takeUntil(spriteContainerMouseUps).
-						// ------------   INSERT CODE HERE  -----------------
-						// Project each mouse move object into a new object
-						// with adjusted pageX and pageY properties.
-						// Translate each page coordinate based on the value
-						// of the offsetX and offsetY properties in the
-						// contactPoint.
-						// -------------------------------------------------
-						// Complete expression...
+						map(function(movePoint) {
+							return {
+								pageX: movePoint.pageX - contactPoint.offsetX,
+								pageY: movePoint.pageY - contactPoint.offsetY
+							};
+						});
 				});
 
 	// For each mouse drag event, move the sprite to the absolute page position.
@@ -30,4 +28,4 @@ function(sprite, spriteContainer) {
 		sprite.style.top = dragPoint.pageY + "px";
 	});
 }
-		
+        

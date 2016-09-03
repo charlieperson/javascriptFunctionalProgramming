@@ -6,15 +6,11 @@ function (getSearchResultSet, keyPresses, textBox) {
 				return textBox.value;
 			}).
 			throttle(1000).
-
-			// TODO: Make sure we only get distinct values
-
-			// TODO: Make sure the text is not empty
-
+			distinctUntilChanged().
+			filter(function (s) { return s.length > 0; }).
 			concatMap(function (text) {
 				return getSearchResultSet(text).takeUntil(keyPresses);
 			});
 
 	return getSearchResultSets;
 }
-		
